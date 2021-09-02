@@ -4,10 +4,16 @@ body {
   font-family: "Poppins", sans-serif;
 }
 .main-search {
-  background: linear-gradient(#2a4bed2e, #00000038),
+  background: linear-gradient(#2a4bed2e, #000000ab),
     url(https://images.unsplash.com/photo-1452421822248-d4c2b47f0c81?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1567&q=80);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  height: 20rem;
+  height: 24rem;
+}
+.title-des {
+  color: #ffffff;
+}
+.nav-logo {
+  color: #f6e58d !important;
 }
