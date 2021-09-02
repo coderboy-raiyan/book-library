@@ -87,13 +87,21 @@ let booksData = (data, inputText) => {
       col.className = "col-12 col-md-4 col-lg-4";
       col.innerHTML = `
       <div class="card shadow" style="width: 100%; height: 100%;">
-      <img src="https://covers.openlibrary.org/b/id/${book.cover_i}-L.jpg" style="width: 19rem;margin: auto; height: 21rem; margin-top: 2rem;
+      <img src="https://covers.openlibrary.org/b/id/${
+        book.cover_i
+      }-L.jpg" style="width: 19rem;margin: auto; height: 21rem; margin-top: 2rem;
       margin-bottom: 2rem;" class="card-img-top" alt="...">
       <div class="card-body">
         <h5 class="card-title m-0 fs-4 mb-2">${book.title}</h5>
-        <p class="card-text m-0 text-primary">Author Name : ${book.author_name[0]}</p>
-        <p class="card-text m-0 text-muted">First publish year: ${book.first_publish_year}</p>
-        <p class="card-text m-0 text-muted">First publisher: ${book.publisher}</p>
+        <p class="card-text m-0 text-primary">Author Name : ${
+          book.author_name[0]
+        }</p>
+        <p class="card-text m-0 text-muted">First publish year: ${
+          book.first_publish_year
+        }</p>
+        <p class="card-text m-0 text-muted">First publisher: ${
+          book.publisher === undefined ? "No publisher" : book.publisher[0]
+        }</p>
         
       </div>
     </div>
