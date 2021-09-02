@@ -44,7 +44,7 @@ searchBtn.addEventListener("click", (e) => {
 // Books data function
 
 let findBooksData = (inputText) => {
-  fetchData(`http://openlibrary.org/search.json?q=${inputText}`).then(
+  fetchData(`https://openlibrary.org/search.json?q=${inputText}`).then(
     (data) => {
       booksData(data, inputText);
     }
