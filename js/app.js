@@ -10,10 +10,11 @@ const userError = document.querySelector(".user-error");
 // All books stored div
 const allBooks = document.querySelector(".main-books");
 // Total books found
-const totalBooks = document.querySelector(".total-Books");
+const totalBooks = document.querySelector(".total-count");
 // Loading spinner
 const loader = document.querySelector(".loader");
-
+const total = document.querySelector(".total");
+console.log(total);
 // fetch all data functions
 let fetchData = async (url) => {
   let res = await fetch(url);
@@ -29,13 +30,13 @@ searchBtn.addEventListener("click", (e) => {
   let inputValue = inputBox.value.trim().toLowerCase();
   //   clear
   inputBox.value = "";
-  totalBooks.textContent = "";
   userError.textContent = "";
   emptyErr.classList.add("d-none");
 
   if (inputValue.length > 0) {
     findBooksData(inputValue);
     loader.classList.remove("d-none");
+    totalBooks.classList.add("d-none");
   } else {
     emptyErr.classList.remove("d-none");
   }
@@ -55,14 +56,6 @@ let findBooksData = (inputText) => {
 
 let booksData = (data, inputText) => {
   let myBooks = data.docs.splice(0, 30);
-  //   Book counter
-  let allBooksCount = `${myBooks.length - 1}`;
-
-  if (allBooksCount <= 0) {
-    allBooksCount++;
-  } else {
-    allBooksCount++;
-  }
   // User Input Error here
 
   if (data.numFound === 0) {
@@ -79,17 +72,10 @@ let booksData = (data, inputText) => {
 
     userError.appendChild(typeError);
     loader.classList.add("d-none");
-  } else {
-    let booksCount = document.createElement("div");
-    booksCount.className = "w-25 my-4 m-auto";
-    booksCount.innerHTML = `
-    <h4 class="text-center bg-primary text-white py-4 rounded shadow-sm">
-              Total Books : ${allBooksCount}
-            </h4>
-    `;
-    totalBooks.appendChild(booksCount);
   }
   // Main data function starts here
+
+  let bookall = 1;
 
   myBooks.forEach((book) => {
     //   Checking author name
@@ -107,14 +93,18 @@ let booksData = (data, inputText) => {
         <h5 class="card-title m-0 fs-4 mb-2">${book.title}</h5>
         <p class="card-text m-0 text-primary">Author Name : ${book.author_name[0]}</p>
         <p class="card-text m-0 text-muted">First publish year: ${book.first_publish_year}</p>
-        <p class="card-text m-0 text-muted">First publisher: ${book.publisher[0]}</p>
+        <p class="card-text m-0 text-muted">First publisher: ${book.publisher}</p>
         
       </div>
     </div>
     `;
       allBooks.appendChild(col);
+
+      let booksTotal = bookall++;
+      total.innerHTML = booksTotal;
+      totalBooks.classList.remove("d-none");
     }
     loader.classList.add("d-none");
-    console.log(book);
   });
 };
+console.log(totalBooks);
