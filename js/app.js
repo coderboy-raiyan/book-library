@@ -36,9 +36,9 @@ searchBtn.addEventListener("click", (e) => {
   if (inputValue.length > 0) {
     findBooksData(inputValue);
     loader.classList.remove("d-none");
-    totalBooks.classList.add("d-none");
   } else {
     emptyErr.classList.remove("d-none");
+    totalBooks.classList.add("d-none");
   }
 });
 
@@ -83,13 +83,19 @@ let booksData = (data, inputText) => {
     if (book.author_name === undefined) {
       return;
     } else {
+      let imgSrc = `https://covers.openlibrary.org/b/id/${book.cover_i}-L.jpg`;
+      console.log(imgSrc);
+      if (book.cover_i === undefined) {
+        imgSrc = `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVIiNXO1UGEUca6N_ZRXpaxUXzAUqs_1KTCpXauiZOpAO6jrQ0XwivrGx3F9UJBNCzn8E&usqp=CAU`;
+      } else {
+        imgSrc;
+      }
+
       let col = document.createElement("div");
       col.className = "col-12 col-md-4 col-lg-4";
       col.innerHTML = `
       <div class="card shadow" style="width: 100%; height: 100%;">
-      <img src="https://covers.openlibrary.org/b/id/${
-        book.cover_i
-      }-L.jpg" style="width: 19rem;margin: auto; height: 21rem; margin-top: 2rem;
+      <img src="${imgSrc}" style="width: 19rem;margin: auto; height: 21rem; margin-top: 2rem;
       margin-bottom: 2rem;" class="card-img-top" alt="...">
       <div class="card-body">
         <h5 class="card-title m-0 fs-4 mb-2">${book.title}</h5>
