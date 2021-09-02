@@ -14,7 +14,7 @@ const totalBooks = document.querySelector(".total-count");
 // Loading spinner
 const loader = document.querySelector(".loader");
 const total = document.querySelector(".total");
-console.log(total);
+
 // fetch all data functions
 let fetchData = async (url) => {
   let res = await fetch(url);
@@ -69,7 +69,7 @@ let booksData = (data, inputText) => {
     class="m-auto"
     width="400"
   />
-  <h3 class="text-center text-warning">No Book found by --${inputText}</h3>`;
+  <h3 class="text-center text-warning">No Book found by <span class="text-danger">--${inputText}</span></h3>`;
 
     userError.appendChild(typeError);
     loader.classList.add("d-none");
@@ -85,7 +85,7 @@ let booksData = (data, inputText) => {
       return;
     } else {
       let imgSrc = `https://covers.openlibrary.org/b/id/${book.cover_i}-L.jpg`;
-      console.log(imgSrc);
+
       if (book.cover_i === undefined) {
         imgSrc = `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVIiNXO1UGEUca6N_ZRXpaxUXzAUqs_1KTCpXauiZOpAO6jrQ0XwivrGx3F9UJBNCzn8E&usqp=CAU`;
       } else {
@@ -99,14 +99,14 @@ let booksData = (data, inputText) => {
       <img src="${imgSrc}" style="width: 19rem;margin: auto; height: 21rem; margin-top: 2rem;
       margin-bottom: 2rem;" class="card-img-top" alt="...">
       <div class="card-body">
-        <h5 class="card-title m-0 fs-4 mb-2">${book.title}</h5>
-        <p class="card-text m-0 text-primary">Author Name : ${
+        <h5 class="card-title m-0 fs-4 mb-2 fw-bold">${book.title}</h5>
+        <p class="card-text m-0 text-primary fs-5">Author Name : ${
           book.author_name[0]
         }</p>
-        <p class="card-text m-0 text-muted">First publish year: ${
+        <p class="card-text m-0 text-info fw-bold py-2">First publish year: ${
           book.first_publish_year
         }</p>
-        <p class="card-text m-0 text-muted">First publisher: ${
+        <p class="card-text m-0 text-muted fw-light">First publisher: ${
           book.publisher === undefined ? "No publisher" : book.publisher[0]
         }</p>
         
@@ -122,4 +122,3 @@ let booksData = (data, inputText) => {
     loader.classList.add("d-none");
   });
 };
-console.log(totalBooks);
