@@ -106,7 +106,7 @@ let booksData = (data, inputText) => {
         <p class="card-text m-0 text-info fw-bold py-2">First publish year: ${
           book.first_publish_year
         }</p>
-        <p class="card-text m-0 text-muted fw-light">First publisher: ${
+        <p class="card-text m-0 text-muted fw-light">Publisher: ${
           book.publisher === undefined ? "No publisher" : book.publisher[0]
         }</p>
         
