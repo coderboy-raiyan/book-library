@@ -32,6 +32,7 @@ searchBtn.addEventListener("click", (e) => {
   inputBox.value = "";
   userError.textContent = "";
   emptyErr.classList.add("d-none");
+  totalBooks.classList.add("d-none");
 
   if (inputValue.length > 0) {
     findBooksData(inputValue);
